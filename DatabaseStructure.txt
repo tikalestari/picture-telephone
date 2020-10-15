@@ -1,0 +1,7 @@
+Collection
+    - Games 
+        - createdAt: timestamp
+        - players: ["player1", "player2"]
+        - roomCode: "ABCD"
+        - roomSetting:
+            - timerPerRound: 90
