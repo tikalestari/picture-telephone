@@ -1,7 +1,17 @@
-Collection
+Collections
     - Games 
         - createdAt: timestamp
         - players: ["player1", "player2"]
         - roomCode: "ABCD"
+        - roomHost: "player1"
         - roomSetting:
             - timerPerRound: 90
+        - gameActions: 
+
+
+
+Game Actions are actions that happened during a game room and is displayed in the chat box in real time. Examples:
+- "Player1 has entered the room"
+- "Player1 changed the timer to 60 seconds"
+- "Player2 has entered the room"
+- "Player2 has left the room"

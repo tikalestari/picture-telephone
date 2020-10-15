@@ -22,3 +22,23 @@ exports.getGames = functions.https.onRequest((req, res) => {
         })
         .catch(err => console.error(err));
 });
+
+exports.createGame = functions.https.onRequest((req, res) => {
+    const newGame = {
+        createdAt: admin.firestore.Timestamp.fromDate(new Date()),
+        players: req.body.players,
+        roomCode: req.body.roomCode,
+        roomHost: req.body.roomHost
+    };
+
+    admin.firestore()
+        .collection('games')
+        .add(newGame)
+        .then(doc => {
+            res.json({ message: `document ${doc.id} created successfully`});
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'something went wrong'});
+            console.error(err);
+        });
+});
