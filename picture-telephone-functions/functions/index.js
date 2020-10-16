@@ -31,7 +31,7 @@ app.get('/games', (req, res) => {
 
 app.post('/games', (req, res) => {
     const newGame = {
-        createdAt: admin.firestore.Timestamp.fromDate(new Date()),
+        createdAt: new Date().toISOString(),
         players: req.body.players,
         roomCode: req.body.roomCode,
         roomHost: req.body.roomHost
