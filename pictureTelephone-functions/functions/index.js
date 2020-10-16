@@ -3,27 +3,33 @@ const admin = require('firebase-admin');
 
 admin.initializeApp();
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-exports.helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", {structuredData: true});
-  response.send("Hello world!");
-});
+const express = require('express');
+const app = express();
 
-exports.getGames = functions.https.onRequest((req, res) => {
-    admin.firestore().collection('games').get()
+
+app.get('/games', (req, res) => {
+    admin
+        .firestore()
+        .collection('games')
+        .orderBy('createdAt', 'desc')
+        .get()
         .then(data => {
             let games = [];
             data.forEach(doc => {
-                games.push(doc.data());
+                games.push({
+                    gameId: doc.id,
+                    createdAt: doc.data().createdAt,
+                    players: doc.data().players,
+                    roomCode: doc.data().roomCode,
+                    roomHost: doc.data().roomHost
+                });
             });
             return res.json(games);
         })
         .catch(err => console.error(err));
 });
 
-exports.createGame = functions.https.onRequest((req, res) => {
+app.post('/games', (req, res) => {
     const newGame = {
         createdAt: admin.firestore.Timestamp.fromDate(new Date()),
         players: req.body.players,
@@ -42,3 +48,5 @@ exports.createGame = functions.https.onRequest((req, res) => {
             console.error(err);
         });
 });
+
+exports.api = functions.https.onRequest(app);
