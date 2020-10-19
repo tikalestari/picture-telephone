@@ -26,9 +26,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { StyleSheet, css } from 'aphrodite';
-import HomeComponent from './components/HomeComponent/HomeComponent';
+
+// Components
+// import home from './components/HomeComponent';
+
+// Pages
 import home from './pages/home';
-import waitroom from './pages/waitroom.js'
+import waitroom from './pages/waitroom'
 
 const styles = StyleSheet.create({
   container: {
@@ -52,7 +56,6 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={home} />
               <Route exact path="/waiting-room" component={waitroom} />
-              {/* <Route path="/waiting-room" component={WaitingRoomComponent} /> */}
             </Switch>  
           </Router>
       </React.Fragment>

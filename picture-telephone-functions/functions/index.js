@@ -1,10 +1,8 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const app = require('express')();
 
 admin.initializeApp();
-
-const express = require('express');
-const app = express();
 
 
 app.get('/games', (req, res) => {
