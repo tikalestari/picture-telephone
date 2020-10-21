@@ -90,8 +90,8 @@ class homeComponent extends Component {
                             id="username"
                             name="username"
                             type="username"
-                            // label="Username"
-                            // className={classes.textField}
+                            label="Username"
+                            className={classes.textField}
                             placeholder="what is your name?"
                             value={this.state.username}
                             onChange={this.handleChange}
