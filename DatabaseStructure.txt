@@ -6,7 +6,11 @@ Collections
         - roomHost: "player1"
         - roomSetting:
             - timerPerRound: 90
-        - gameActions: 
+        - gameActions:
+        - playerStatus: {
+            "player1": "active",
+            "player2": "inactive"
+        } 
 
 
 
@@ -15,3 +19,5 @@ Game Actions are actions that happened during a game room and is displayed in th
 - "Player1 changed the timer to 60 seconds"
 - "Player2 has entered the room"
 - "Player2 has left the room"
+
+
