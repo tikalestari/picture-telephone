@@ -47,4 +47,8 @@ app.post('/games', (req, res) => {
         });
 });
 
+// app.get('/games/{room_code}', (req, res) => {
+
+// })
+
 exports.api = functions.https.onRequest(app);
