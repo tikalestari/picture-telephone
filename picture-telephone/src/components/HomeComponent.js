@@ -54,7 +54,8 @@ class homeComponent extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.setState({
-            loading: true
+            loading: true,
+            username: event.target.name
         });
         const userData = {
             username: this.state.username,
@@ -98,7 +99,6 @@ class homeComponent extends Component {
                     </FormGroup>
                     <Button className={css(styles.startButton)} size="lg" block >START A NEW GAME</Button>
                 </Form>
-                
                 <Button className={css(styles.joinButton)} size="lg" block>JOIN A GAME</Button>
             </Column>
         );
